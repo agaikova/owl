@@ -188,29 +188,29 @@ class CommunicationChannel(ctn_benchmark.Benchmark):
                 ind2[:] = [(x-increment) for x in ind2]
                 x_axis2 = np.transpose(ind2[-1])
 
-            if mean1_activity[l:r].shape != x_axis1.shape:
-                r += 1
                 if mean1_activity[l:r].shape != x_axis1.shape:
-                    i +=1
-                else:
+                    r += 1
+                    if mean1_activity[l:r].shape != x_axis1.shape:
+                        i +=1
+                    else:
+                        mean1_array.append(mean1_activity[l:r])
+                        #pylab.plot(x_axis1, mean1_activity[l:r])
+    
+                if mean2_activity[l2:r2].shape != x_axis2.shape:
+                    r2 +=1
+                    if mean2_activity[l2:r2].shape != x_axis2.shape:
+                        i +=1
+                    else:
+                        mean2_array.append(mean2_activity[l2:r2])
+                        #pylab.plot(x_axis2, mean2_activity[l2:r2])
+                elif mean1_activity[l:r].shape == x_axis1.shape and mean2_activity[l2:r2].shape == x_axis2.shape:
                     mean1_array.append(mean1_activity[l:r])
                     #pylab.plot(x_axis1, mean1_activity[l:r])
-
-            if mean2_activity[l2:r2].shape != x_axis2.shape:
-                r2 +=1
-                if mean2_activity[l2:r2].shape != x_axis2.shape:
-                    i +=1
-                else:
+                
                     mean2_array.append(mean2_activity[l2:r2])
                     #pylab.plot(x_axis2, mean2_activity[l2:r2])
-            elif mean1_activity[l:r].shape == x_axis1.shape and mean2_activity[l2:r2].shape == x_axis2.shape:
-                mean1_array.append(mean1_activity[l:r])
-                #pylab.plot(x_axis1, mean1_activity[l:r])
-            
-                mean2_array.append(mean2_activity[l2:r2])
-                #pylab.plot(x_axis2, mean2_activity[l2:r2])
-            else:
-                i+=1
+                else:
+                    i+=1
                 
         print('mean1 array =', mean1_array)
         print('mean2 array =', mean2_array)
@@ -262,18 +262,18 @@ class CommunicationChannel(ctn_benchmark.Benchmark):
         # Graphs are gonna happen
         mean1_array = np.asarray(mean1_array)
         mean2_array = np.asarray(mean2_array)
-        print('mean1 array AGAIN =', mean1_array)
-        print('mean2 array AGAIN =', mean2_array)
+        #print('mean1 array AGAIN =', mean1_array)
+        #print('mean2 array AGAIN =', mean2_array)
         
         data1 = take_average(mean1_array, mean1_activity, master)
         data2 = take_average(mean2_array, mean2_activity, master2)
-        print(data1)
+        #print(data1)
         data1 = mean(data1, 0)
         data2 = mean(data2, 0)
-        print(data1)
+        #print(data1)
 
         x = np.where(data1 == np.max(data1))[0]
-        print(x)
+        #print(x)
         x = int(x)
 
         x2 = np.where(data2 == data2.max())[0]
