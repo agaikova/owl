@@ -170,7 +170,7 @@ class Owl(ctn_benchmark.Benchmark):
             
             # These loops acount for ignoring the tuning curves that are cut off halfway
             if (indicies_to_adjust1[0]).size == 0 or (ind2[0]).size ==0:
-                pylab.plot(mean1_activity)
+                #pylab.plot(mean1_activity)
                 i += 1
             else:
                 l = (indicies_to_adjust1[0][0])
@@ -281,7 +281,7 @@ class Owl(ctn_benchmark.Benchmark):
         shift = x2 - x
 
 
-        pylab.plot(shift)
+        #pylab.plot(shift)
         return {'shift':shift}
         
 
