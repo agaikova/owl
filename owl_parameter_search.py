@@ -24,7 +24,7 @@ class Owl(ctn_benchmark.Benchmark):
         self.default('time per val testing', time_per_val_testing = 0.5)
         self.default('train interval', train_int = 45)
 
-        self.default('childhood', childhood = 1000)
+        self.default('childhood', childhood = 2000)
         self.default('time glasses are on', t_glasses_on = 10)
 
         self.default('modifier', mod = 0.401426)
