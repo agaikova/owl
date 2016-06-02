@@ -136,7 +136,7 @@ class Owl(ctn_benchmark.Benchmark):
             nengo.Connection(error, vis2vis.learning_rule)
 
             self.probe = nengo.Probe(visual_cor.neurons)
-            self.probe2 = nengo.Probe(visual_raw.neurons)
+            
 
         return model
 
