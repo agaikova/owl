@@ -23,7 +23,7 @@ class Owl(ctn_benchmark.Benchmark):
         self.default('time per val', time_per_val = 0.5)
         self.default('time per val testing', time_per_val_testing = 0.5)
         self.default('train interval', train_int = 45)
-        self.default('left intercept limit', left_intercept = 0.5)
+        self.default('left intercept limit', left_intercept = 1.0)
         self.default('right intercept limit', right_intercept = 1.0)
 
         self.default('childhood', childhood = 100)
@@ -276,13 +276,14 @@ class Owl(ctn_benchmark.Benchmark):
         data2 = mean(data2, 0)
         #print(data1)
 
-        x = np.where(data1 == np.max(data1))[0]
+        x = np.where(data1 == np.max(data1))[0][0]
         #print(x)
         x = int(x)
 
-        x2 = np.where(data2 == data2.max())[0]
+        x2 = np.where(data2 == data2.max())[0][0]
         x2 = int(x2)
         shift = x2 - x
+        
         width = (np.where(data1>0))[0][0] - (np.where(data1>0))[-1][-1]
 
         #pylab.plot(shift)

@@ -9,8 +9,8 @@ Dump everything into a data folder. All data processing happens externally in us
 """
 import owl_parameter_search
 
-glasses_values = [20, 200, 2000]
+glasses_values = [(1000/10), 1000, (1000*10)]
 
-for seed in range(2):
+for seed in range(3):
     for glasses in glasses_values:
         owl_parameter_search.Owl().run(t_glasses_on = glasses, seed = seed)
