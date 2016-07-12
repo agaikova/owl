@@ -16,7 +16,7 @@ import numpy as np
 import pylab
 import matplotlib.pyplot as plt
 
-import ctn_benchmark
+import ctn_benchmarks
 
 class Owl(ctn_benchmark.Benchmark):
     def params(self):
@@ -138,7 +138,7 @@ class Owl(ctn_benchmark.Benchmark):
             nengo.Connection(error, vis2vis.learning_rule)
 
             self.probe = nengo.Probe(visual_cor.neurons)
-            self.probe2 = nengo.Probe(visual_raw.neurons)
+            #self.probe2 = nengo.Probe(visual_raw.neurons)
 
         return model
 
@@ -223,7 +223,7 @@ class Owl(ctn_benchmark.Benchmark):
         def take_average(mean_array, mean_activity, master):
             #print('Mean array SIZE', mean_array.size)
             #print('Mean activity size', mean_activity.size)
-            for j in range(mean_array.size):
+            for j in range(mean_array.shape[0]):
                 cur = mean_array[j] 
                 #print(cur)
                 cur_length = cur.size
@@ -266,9 +266,7 @@ class Owl(ctn_benchmark.Benchmark):
         # Graphs are gonna happen
         mean1_array = np.asarray(mean1_array)
         mean2_array = np.asarray(mean2_array)
-        #print('mean1 array AGAIN =', mean1_array)
-        #print('mean2 array AGAIN =', mean2_array)
-        
+  
         data1 = take_average(mean1_array, mean1_activity, master)
         data2 = take_average(mean2_array, mean2_activity, master2)
         #print(data1)

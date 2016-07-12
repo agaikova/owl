@@ -28,7 +28,7 @@ trials = Trials()
 best = fmin(objective,
             space = {'childhood': hp.uniform('childhood', 10, 10000), 't_glasses_on': hp.uniform('t_glasses_on', 10, 10000)},
             algo = tpe.suggest,
-            max_evals = 10,
+            max_evals = 1000,
             trials = trials
            )
 pickle.dump({'Trials': trials, 'Best': best}, open ('owl_hyperopt_data', 'w'))
